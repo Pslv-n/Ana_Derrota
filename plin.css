@@ -1,69 +1,99 @@
-*{
-    margin: 0px;
-    padding: 15px;
-    }
-
+/* Reset e Box-sizing para evitar quebras no celular */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 @font-face {
     font-family: 'KiwiSoda';
+    /* Caminhos ajustados para o GitHub Pages */
     src: url('KiwiSoda.woff2') format('woff2'),
          url('KiwiSoda.ttf') format('truetype');
     font-weight: normal;
-    font-style: cursive;
+    font-style: normal;
 }
 
- body{
-       background-image: url("noisss.jpg");
-       background-position: center; 
-    background-repeat: no-repeat; 
-    background-size: cover;
-     height: 1080px;
-       font-family: KiwiSoda;
-       font-size: 28px;
-        color: #422008;
-       margin-top: 1px;
-       text-align: justify;
- }
- #container{
-        background-image: url("ana.png");
-         height: 1089px;
-         width: 990px;
-        border: 2px solid #333;
-         border-radius: 15px;
+body {
+    background-image: url("noisss.jpg");
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover;
-     max-width: 1200px;
-  margin-left: auto; 
-  margin-right: auto;
-  padding: 0 80px;   
-  transition: filter 1s ease;
- }	
+    background-attachment: fixed; /* O fundo fica parado enquanto você rola o texto */
+    
+    min-height: 100vh;
+    font-family: 'KiwiSoda', sans-serif;
+    font-size: 28px;
+    color: #422008;
+    text-align: justify;
+    padding: 20px 10px;
+}
 
- #container:hover {
+#container {
+    background-image: url("ana.png");
+    /* Ajuste para ser responsivo: */
+    width: 100%;
+    max-width: 990px; 
+    min-height: 1089px; 
+    height: auto; /* Permite crescer se o texto for longo */
+    
+    border: 2px solid #333;
+    border-radius: 15px;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+
+    margin-left: auto; 
+    margin-right: auto;
+    padding: 40px 50px; /* Padding reduzido para não apertar no celular */
+    
+    transition: filter 1s ease;
+}
+
+#container:hover {
     filter: brightness(1.2) opacity(0.5);
 }
- 
- h1{
-     font-weight:bold;
-     color: #006400;
-     
-     margin-bottom: 10px;
- }
-      h5 {
+
+h1 {
+    font-weight: bold;
+    color: #006400;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Garante que o h5 não tenha blocos invisíveis */
+h5 {
     margin: 0;
     padding: 0;
-    display: inline-block;
-}    
- #footer{
-     text-align:center;
-     color:	#FF8C00;
-         letter-spacing: 4px;
-     margin-top: 10px;
-        font-size: 25px;
-        font-weight: bold;
-        background-color: rgba(255, 255, 255, 0.7);
-     
-        padding: 0px;
-        border-radius: 10px;
-     }
+    display: inline; /* Mudado para inline para remover o bloco */
+    font-weight: bold;
+}
+
+#footer {
+    text-align: center;
+    color: #FF8C00;
+    letter-spacing: 2px; /* Reduzido levemente para caber em telas menores */
+    margin-top: 20px;
+    font-size: 25px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* Ajustes exclusivos para Celular */
+@media (max-width: 600px) {
+    body {
+        font-size: 20px; /* Diminui a letra no celular para não cortar */
+    }
+    #container {
+        padding: 20px;
+        min-height: auto;
+    }
+    #footer {
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+}
