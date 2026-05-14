@@ -6,8 +6,8 @@
 
 @font-face {
     font-family: 'KiwiSoda';
-    src: url('fonts/KiwiSoda.woff2') format('woff2'),
-         url('/KiwiSoda.ttf') format('truetype');
+    src: url('KiwiSoda.woff2') format('woff2'),
+         url('KiwiSoda.ttf') format('truetype');
     font-weight: normal;
     font-style: cursive;
 }
