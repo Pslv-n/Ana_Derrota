@@ -3,13 +3,12 @@
 <head>
     <title>Ana Derrota</title>
     <meta charset="utf-8">
-    <!-- Adicionado para funcionar corretamente em dispositivos móveis -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="lirio.png">
     <link rel="stylesheet" type="text/css" href="plin.css">
 </head>
 <body>
-    <div id="container">
+    <div id="container" onclick="alternarOpacidade(event)">
         <h1>PODE VIR COMIGO</h1>
         
         Pare de chorar, te faço entender<br>
@@ -41,41 +40,46 @@
         Mas mesmo assim não temo<br>
         Pode vir comigo, pode vir comigo.
 
-
         <audio id="meuAudio" loop>
-  <source src="pode.mp3" type="audio/mpeg">
-</audio>
+            <source src="pode.mp3" type="audio/mpeg">
+        </audio>
 
+        <button id="botaoControle" class="btn-musica">
+            <img id="iconePlayPause" src="play.png" alt="Botão de Play">
+        </button>
 
-<button id="botaoControle" class="btn-musica">
-  <img id="iconePlayPause" src="play.png" alt="Botão de Play">
-</button>
-
-
-<script>
-       const audio = document.getElementById('meuAudio');
-const botao = document.getElementById('botaoControle');
-const icone = document.getElementById('iconePlayPause');
-
-botao.addEventListener('click', function() {
-  if (audio.paused) {
-    audio.play();
-
-    icone.src = 'play.png'; 
-    icone.alt = 'Botão de Pause';
-  } else {
-    audio.pause();
-
-    icone.src = 'pause.png';
-    icone.alt = 'Botão de Play';
-  }
-});
-    </script>
-        
         <hr> 
+        
         <div id="footer">
             <h5> "Começo todo dia me perguntando como achei alguem que nem você,<br> e sempre termino o dia agradecendo por ter achado.<br>Eu te amo." </h5>
         </div>
     </div>	
+
+    <script>
+        // Controle da Música
+        const audio = document.getElementById('meuAudio');
+        const botao = document.getElementById('botaoControle');
+        const icone = document.getElementById('iconePlayPause');
+
+        botao.addEventListener('click', function(event) {
+            event.stopPropagation(); // Impede que o clique no botão ative a transparência do container
+            if (audio.paused) {
+                audio.play();
+                icone.src = 'pause.png';
+                icone.alt = 'Botão de Pause';
+            } else {
+                audio.pause();
+                icone.src = 'play.png';
+                icone.alt = 'Botão de Play';
+            }
+        });
+
+        // Função para alternar a opacidade do Container no Clique
+        function alternarOpacidade(event) {
+            const container = document.getElementById('container');
+            // Só ativa se clicar no container (evita bugs caso clique em links ou botões futuros)
+            container.classList.toggle('transparente');
+        }
+    </script>
 </body>
 </html>
