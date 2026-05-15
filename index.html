@@ -40,6 +40,37 @@
         Ah, não que eu seja sem medo<br>
         Mas mesmo assim não temo<br>
         Pode vir comigo, pode vir comigo.
+
+
+        <audio id="meuAudio" loop>
+  <source src="pode.mp3" type="audio/mpeg">
+</audio>
+
+
+<button id="botaoControle" class="btn-musica">
+  <img id="iconePlayPause" src="play.png" alt="Botão de Play">
+</button>
+
+
+<script>
+       const audio = document.getElementById('meuAudio');
+const botao = document.getElementById('botaoControle');
+const icone = document.getElementById('iconePlayPause');
+
+botao.addEventListener('click', function() {
+  if (audio.paused) {
+    audio.play();
+
+    icone.src = 'play.png'; 
+    icone.alt = 'Botão de Pause';
+  } else {
+    audio.pause();
+
+    icone.src = 'pause.png';
+    icone.alt = 'Botão de Play';
+  }
+});
+    </script>
         
         <hr> 
         <div id="footer">
