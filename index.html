@@ -55,6 +55,8 @@
         </div>
     </div>	
 
+    <div id="container" ontouchstart="alternarOpacidade(event)" onclick="alternarOpacidade(event)">
+
     <script>
         // Controle da Música
         const audio = document.getElementById('meuAudio');
@@ -72,6 +74,21 @@
                 icone.src = 'play.png';
                 icone.alt = 'Botão de Play';
             }
+
+            let travado = false;
+
+function alternarOpacidade(event) {
+    // Evita que o navegador execute o clique e o toque ao mesmo tempo
+    if (event.type === 'touchstart') {
+        travado = true;
+    } else if (travado && event.type === 'click') {
+        travado = false;
+        return;
+    }
+
+    const container = document.getElementById('container');
+    container.classList.toggle('transparente');
+}
         });
 
         // Função para alternar a opacidade do Container no Clique
