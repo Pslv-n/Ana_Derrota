@@ -1,4 +1,4 @@
-/* Reset e Box-sizing para evitar quebras no celular */
+/* Reset e Box-sizing */
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +7,6 @@
 
 @font-face {
     font-family: 'KiwiSoda';
-    /* Caminhos ajustados para o GitHub Pages */
     src: url('KiwiSoda.woff2') format('woff2'),
          url('KiwiSoda.ttf') format('truetype');
     font-weight: normal;
@@ -19,23 +18,23 @@ body {
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover;
-    background-attachment: fixed; /* O fundo fica parado enquanto você rola o texto */
+    background-attachment: fixed; 
     
     min-height: 100vh;
     font-family: 'KiwiSoda', sans-serif;
     font-size: 28px;
     color: #422008;
     text-align: justify;
-    padding: 20px 10px;
+    padding: 20px 15px;
 }
 
 #container {
     background-image: url("ana.png");
-    /* Ajuste para ser responsivo: */
     width: 100%;
     max-width: 990px; 
     min-height: 1089px; 
-    height: auto; /* Permite crescer se o texto for longo */
+    height: auto; 
+    cursor: pointer; /* Mostra a mãozinha indicando que dá para clicar */
     
     border: 2px solid #333;
     border-radius: 15px;
@@ -45,46 +44,40 @@ body {
 
     margin-left: auto; 
     margin-right: auto;
-    padding: 40px 50px; /* Padding reduzido para não apertar no celular */
+    padding: 40px 50px; 
     
-    transition: filter 1s ease;
+    /* Deixa a transição da opacidade suave tanto ao entrar quanto ao sair */
+    transition: filter 0.8s ease, opacity 0.8s ease; 
 }
 
-#container:hover {
-    filter: brightness(1.2) opacity(0.5);
+/* Esta classe controla o estado transparente após o clique */
+#container.transparente {
+    filter: brightness(1.2);
+    opacity: 0.5;
 }
 
+/* Estilização do Botão de Música */
 .btn-musica {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  outline: none;
+    position: fixed;     
+    bottom: 30px;        
+    right: 30px;         
+    z-index: 9999;       
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Controla o tamanho do ícone */
 #iconePlayPause {
-  width: 100px;  /* Ajuste a largura como preferir */
-  height: 100px; /* Ajuste a altura como preferir */
-  transition: transform 0.2s ease; /* Efeito suave ao passar o mouse */
+    width: 80px;  
+    height: 80px; 
+    transition: transform 0.2s ease; 
 }
 
 #iconePlayPause:hover {
-  transform: scale(1.1); /* Dá um leve zoom quando o usuário passa o mouse */
-}
-
-
-.btn-musica {
-  position: fixed;     /* Fixa o elemento na tela, ignorando a rolagem */
-  bottom: 20px;        /* Distância de 20 pixels do fundo da tela */
-  right: 20px;         /* Distância de 20 pixels da lateral direita */
-  z-index: 9999;       /* Garante que o botão fique na frente de qualquer outro elemento do site */
-  
-  /* Remove os estilos padrão do botão para destacar apenas a imagem */
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+    transform: scale(1.1); 
 }
 
 h1 {
@@ -94,18 +87,17 @@ h1 {
     text-align: center;
 }
 
-/* Garante que o h5 não tenha blocos invisíveis */
 h5 {
     margin: 0;
     padding: 0;
-    display: inline; /* Mudado para inline para remover o bloco */
+    display: inline; 
     font-weight: bold;
 }
 
 #footer {
     text-align: center;
     color: #FF8C00;
-    letter-spacing: 2px; /* Reduzido levemente para caber em telas menores */
+    letter-spacing: 2px; 
     margin-top: 20px;
     font-size: 25px;
     background-color: rgba(255, 255, 255, 0.7);
@@ -113,20 +105,35 @@ h5 {
     border-radius: 10px;
 }
 
-/* Ajustes exclusivos para Celular */
+/* Ajustes e otimizações exclusivas para Celular */
 @media (max-width: 600px) {
     body {
-        font-size: 20px; /* Diminui a letra no celular para não cortar */
+        font-size: 20px; 
+        padding: 10px 5px;
     }
+    
     #container {
-        padding: 20px;
+        padding: 25px 20px;
         min-height: auto;
     }
+    
     #footer {
-        font-size: 18px;
+        font-size: 17px;
         letter-spacing: 1px;
+        padding: 10px;
     }
+    
     h1 {
         font-size: 24px;
+    }
+
+    #iconePlayPause {
+        width: 60px;  
+        height: 60px; 
+    }
+    
+    .btn-musica {
+        bottom: 20px;
+        right: 20px;
     }
 }
