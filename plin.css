@@ -54,6 +54,39 @@ body {
     filter: brightness(1.2) opacity(0.5);
 }
 
+.btn-musica {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Controla o tamanho do ícone */
+#iconePlayPause {
+  width: 100px;  /* Ajuste a largura como preferir */
+  height: 100px; /* Ajuste a altura como preferir */
+  transition: transform 0.2s ease; /* Efeito suave ao passar o mouse */
+}
+
+#iconePlayPause:hover {
+  transform: scale(1.1); /* Dá um leve zoom quando o usuário passa o mouse */
+}
+
+
+.btn-musica {
+  position: fixed;     /* Fixa o elemento na tela, ignorando a rolagem */
+  bottom: 20px;        /* Distância de 20 pixels do fundo da tela */
+  right: 20px;         /* Distância de 20 pixels da lateral direita */
+  z-index: 9999;       /* Garante que o botão fique na frente de qualquer outro elemento do site */
+  
+  /* Remove os estilos padrão do botão para destacar apenas a imagem */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
 h1 {
     font-weight: bold;
     color: #006400;
