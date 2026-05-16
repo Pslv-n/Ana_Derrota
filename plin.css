@@ -34,7 +34,7 @@ body {
     max-width: 990px; 
     min-height: 1089px; 
     height: auto; 
-    cursor: pointer; /* Mostra a mãozinha indicando que dá para clicar */
+    cursor: pointer;
     
     border: 2px solid #333;
     border-radius: 15px;
@@ -46,7 +46,9 @@ body {
     margin-right: auto;
     padding: 40px 50px; 
     
-    /* Deixa a transição da opacidade suave tanto ao entrar quanto ao sair */
+    /* Esta linha abaixo remove o atraso de toque e o foco persistente no celular: */
+    -webkit-tap-highlight-color: transparent; 
+    
     transition: filter 0.8s ease, opacity 0.8s ease; 
 }
 
