@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="plin.css">
 </head>
 <body>
-    <div id="container" onclick="alternarOpacidade(event)">
+    <div id="container" ontouchstart="alternarOpacidade(event)" onclick="alternarOpacidade(event)">
         <h1>PODE VIR COMIGO</h1>
         
         Pare de chorar, te faço entender<br>
@@ -40,14 +40,6 @@
         Mas mesmo assim não temo<br>
         Pode vir comigo, pode vir comigo.
 
-        <audio id="meuAudio" loop>
-            <source src="pode.mp3" type="audio/mpeg">
-        </audio>
-
-        <button id="botaoControle" class="btn-musica">
-            <img id="iconePlayPause" src="play.png" alt="Botão de Play">
-        </button>
-
         <hr> 
         
         <div id="footer">
@@ -55,7 +47,13 @@
         </div>
     </div>	
 
-    <div id="container" ontouchstart="alternarOpacidade(event)" onclick="alternarOpacidade(event)">
+    <audio id="meuAudio" loop>
+        <source src="pode.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="botaoControle" class="btn-musica">
+        <img id="iconePlayPause" src="play.png" alt="Botão de Play">
+    </button>
 
     <script>
         // Controle da Música
@@ -64,37 +62,32 @@
         const icone = document.getElementById('iconePlayPause');
 
         botao.addEventListener('click', function(event) {
-            event.stopPropagation(); // Impede que o clique no botão ative a transparência do container
+            // Como o botão está fora do container agora, não precisamos mais do preventDefault ou stopPropagation
             if (audio.paused) {
                 audio.play();
-                icone.src = 'pause.png';
+                icone.src = 'pause.png'; // Quando toca, mostra o ícone de pause
                 icone.alt = 'Botão de Pause';
             } else {
                 audio.pause();
-                icone.src = 'play.png';
+                icone.src = 'play.png'; // Quando pausa, mostra o ícone de play
                 icone.alt = 'Botão de Play';
             }
-
-            let travado = false;
-
-function alternarOpacidade(event) {
-    // Evita que o navegador execute o clique e o toque ao mesmo tempo
-    if (event.type === 'touchstart') {
-        travado = true;
-    } else if (travado && event.type === 'click') {
-        travado = false;
-        return;
-    }
-
-    const container = document.getElementById('container');
-    container.classList.toggle('transparente');
-}
         });
 
-        // Função para alternar a opacidade do Container no Clique
+        // Função para alternar a opacidade do Container no Clique/Toque
+        let travado = false;
+
         function alternarOpacidade(event) {
+            // Evita que o navegador execute o clique e o toque ao mesmo tempo
+            if (event.type === 'touchstart') {
+                travado = true;
+            } else if (travado && event.type === 'click') {
+                travado = false;
+                return;
+            }
+
+            // Garante que o evento venha do container ou de seus filhos
             const container = document.getElementById('container');
-            // Só ativa se clicar no container (evita bugs caso clique em links ou botões futuros)
             container.classList.toggle('transparente');
         }
     </script>
