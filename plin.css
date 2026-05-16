@@ -46,16 +46,16 @@ body {
     margin-right: auto;
     padding: 40px 50px; 
     
-    /* Esta linha abaixo remove o atraso de toque e o foco persistente no celular: */
+    /* Esta linha remove o atraso de toque e o foco persistente no celular: */
     -webkit-tap-highlight-color: transparent; 
     
-    transition: filter 0.8s ease, opacity 0.8s ease; 
+    /* Especifique as propriedades para a transição: opacity e filter */
+    transition: opacity 0.8s ease, filter 0.8s ease; 
 }
 
-/* Esta classe controla o estado transparente após o clique */
 #container.transparente {
-    filter: brightness(1.2);
     opacity: 0.5;
+    filter: brightness(1.2);
 }
 
 /* Estilização do Botão de Música */
@@ -69,7 +69,7 @@ body {
     padding: 0;
     cursor: pointer;
     outline: none;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent; 
 }
 
 #iconePlayPause {
@@ -89,6 +89,7 @@ h1 {
     text-align: center;
 }
 
+/* Rodapé sem marcações fantasmas */
 h5 {
     margin: 0;
     padding: 0;
@@ -129,6 +130,7 @@ h5 {
         font-size: 24px;
     }
 
+    /* Reduz o botão no celular para não cobrir o texto da carta */
     #iconePlayPause {
         width: 60px;  
         height: 60px; 
